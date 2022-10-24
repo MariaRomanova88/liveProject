@@ -10,15 +10,15 @@ public class TriangleAreaTests {
 
     @Test
     void rightTriangle() {
-        double area = TriangleArea.calculate(3D, 4D, 5D);
-        assertEquals(6D, area);
+        double area = TriangleArea.calculate(3, 4, 5);
+        assertEquals(6, area);
     }
 
     @Test
     void isoscelesTriangle() {
-        double area = TriangleArea.calculate(2D, 2D, 2D);
+        double area = TriangleArea.calculate(2, 2, 2);
         // площадь равностороннего треугольника со стороной 2 равна 3 ^ (1 / 2)
-        assertEquals(sqrt(3D), area);
+        assertEquals(sqrt(3), area);
     }
 
 }
