@@ -1,4 +1,4 @@
-package TriangleSquarePage;
+package TrianglePage;
 
 public class TriangleArea {
 
