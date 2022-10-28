@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
  Expected Result: Error messages appear for fields marked as requared (there is no mark (*) on the webpage).
  Actual result: Error message "This field is required." appeared for fields:
-                First Name, Last Name, Hobby, Phone N., Username, E-mail, Password, Confirm Password.
+                First Name, Hobby, Phone N., Username, E-mail, Password, Confirm Password.
 */
 
 public class Check_1 {

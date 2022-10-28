@@ -27,7 +27,6 @@ public class Check_2 {
         driver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
 
         //First Name input[name='name']
-        //Last Name input[type='text']
         //Hobby (//input[@name='hobby'])[3]
         //Phone input[name='phone']
         //Username input[name='username']
@@ -37,7 +36,6 @@ public class Check_2 {
         //Submit input[value='submit']
 
         driver.findElement(By.cssSelector("input[name='name']")).sendKeys("Maria");
-        driver.findElement(By.cssSelector("p:nth-of-type(2) [type]")).sendKeys("Romanova");
         driver.findElement(By.xpath("(//input[@name='hobby'])[3]")).click();
         driver.findElement(By.cssSelector("input[name='phone']")).sendKeys("+911198765432");
         driver.findElement(By.cssSelector("input[name='username']")).sendKeys("Maria Romanova");
