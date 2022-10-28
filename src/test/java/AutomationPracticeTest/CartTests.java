@@ -104,8 +104,9 @@ public class CartTests {
         String cartTitle = driver.findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
         assertEquals("Cart 1 Product", cartTitle);
 
-        //Здесь должен быть проверка, что корзина пуста..но я не нашла ровный селектор для алерта "Your shopping cart is empty."
-
+        //Здесь должна быть проверка, что корзина пуста..но я не нашла ровный селектор для алерта "Your shopping cart is empty". (Actual result: пусто, т к из-за несовпадения с ожидаемым "Your shopping cart is empty." проверка не проходит).
+        String emptyCart = driver.findElement(By.cssSelector(".alert")).getText();
+        assertEquals("", emptyCart);
     }
 
 }
