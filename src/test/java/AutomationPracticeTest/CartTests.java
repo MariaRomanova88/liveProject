@@ -48,17 +48,18 @@ public class CartTests {
 
         driver.findElement(By.id("add_to_cart")).click();
 
+        //Проверки наличия товара в корзине. Не проходят (вероятно из-за неровных селекторов).
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span#layer_cart_product_title")));
+        String productItem = driver.findElement(By.cssSelector("span#layer_cart_product_title")).getText();
+        assertEquals("Printed Dress", productItem);
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#layer_cart_product_quantity")));
-
-        //проверки по наличию товара в корзине
-
-        String productQuantity = driver.findElement(By.cssSelector("#layer_cart_product_quantity")).getText();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span#layer_cart_product_quantity")));
+        String productQuantity = driver.findElement(By.cssSelector("span#layer_cart_product_quantity")).getText();
         assertEquals("1", productQuantity);
 
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".col-md-6.col-xs-12.layer_cart_product > h2")));
         String addProd = driver.findElement(By.cssSelector(".col-md-6.col-xs-12.layer_cart_product > h2")).getText();
         assertEquals("Product successfully added to your shopping cart", addProd);
-
 
         }
 
@@ -80,7 +81,6 @@ public class CartTests {
 
         driver.findElement(By.linkText("Evening Dresses")).click();
 
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".right-block .product-name")));
         driver.findElement(By.cssSelector(".right-block .product-name")).click();
 
@@ -95,18 +95,16 @@ public class CartTests {
         // Checking the possibility of deleting items from the Cart.
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[title='View my shopping cart']")));
         driver.findElement(By.cssSelector("a[title='View my shopping cart']")).click();
-
         driver.findElement(By.cssSelector(".icon-trash")).click();
 
-
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[title='View my shopping cart']")));
-
         String cartTitle = driver.findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
         assertEquals("Cart 1 Product", cartTitle);
 
-        //Здесь должна быть проверка, что корзина пуста..но я не нашла ровный селектор для алерта "Your shopping cart is empty". (Actual result: пусто, т к из-за несовпадения с ожидаемым "Your shopping cart is empty." проверка не проходит).
-        String emptyCart = driver.findElement(By.cssSelector(".alert")).getText();
-        assertEquals("", emptyCart);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".alert-warning")));
+        String emptyCart = driver.findElement(By.cssSelector(".alert-warning")).getText();
+        assertEquals("Your shopping cart is empty.", emptyCart);
+
     }
 
 }
