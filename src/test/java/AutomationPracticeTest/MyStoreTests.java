@@ -35,19 +35,19 @@ public class MyStoreTests {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
-        driver.findElement(By.cssSelector(".logo")).click();
+        driver.findElement(By.cssSelector("img[alt='My Store']")).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("About us")));
         driver.findElement(By.linkText("About us")).click();
-        driver.findElement(By.cssSelector(".logo")).click();
+        driver.findElement(By.cssSelector("img[alt='My Store']")).click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[title='View my shopping cart']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[title='View my shopping cart']")));
         driver.findElement(By.cssSelector("[title='View my shopping cart']")).click();
-        driver.findElement(By.cssSelector(".logo")).click();
+        driver.findElement(By.cssSelector("img[alt='My Store']")).click();
 
         //Проверка наличия лого на странице (Expected: 'My Store').
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[alt='My Store']")));
-        String title = driver.findElement(By.cssSelector("[alt='My Store']")).getText();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("img[alt='My Store']")));
+        String title = driver.findElement(By.cssSelector("img[alt='My Store']")).getText();
         assertEquals("", title);
     }
         @Test
