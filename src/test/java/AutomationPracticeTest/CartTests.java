@@ -48,7 +48,7 @@ public class CartTests {
 
         driver.findElement(By.id("add_to_cart")).click();
 
-        //Проверки наличия товара в корзине. Не проходят (вероятно из-за неровных селекторов).
+        //Checking if an item is in the cart. Not passing (probably due to jagged selectors).
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span#layer_cart_product_title")));
         String productItem = driver.findElement(By.cssSelector("span#layer_cart_product_title")).getText();
         assertEquals("Printed Dress", productItem);
