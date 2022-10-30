@@ -1,11 +1,11 @@
 package AutomationPracticeTest;
 
-import MyStore.ProductPage;
+import MyStore.ProductPageObject;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ProductPageTest {
+public class ProductPageObjectTest {
 
     WebDriver driver;
 
@@ -27,7 +27,7 @@ public class ProductPageTest {
     public void testProductPage() {
         driver.get("http://automationpractice.com/index.php?id_product=4&controller=product");
 
-        String product = new ProductPage(driver)
+        String product = new ProductPageObject(driver)
         .quantityIncrease()
         .quantityDecrease()
         .sizeOption()
