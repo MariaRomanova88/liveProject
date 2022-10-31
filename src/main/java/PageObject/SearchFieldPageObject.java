@@ -12,21 +12,26 @@ public class SearchFieldPageObject {
     public SearchFieldPageObject(WebDriver driver) {
         this.driver = driver;
     }
-    public void inputSearchFld() {
+    public SearchFieldPageObject inputSearchFld() {
         driver.findElement(By.id(searchFld)).click();
+        return this;
     }
-    public void clickSearchBtn() {
+    public SearchFieldPageObject clickSearchBtn() {
         String searchBtn = ".button-search";
         driver.findElement(By.cssSelector(searchBtn)).click();
+        return this;
     }
-    public void sendValidValue() {
+    public SearchFieldPageObject sendValidValue() {
         driver.findElement(By.id(searchFld)).sendKeys("Dress");
+        return this;
     }
-    public void clearSearchFld() {
+    public SearchFieldPageObject clearSearchFld() {
         driver.findElement(By.id(searchFld)).clear();
+        return this;
     }
-    public void sendInvalidValue() {
+    public SearchFieldPageObject sendInvalidValue() {
         driver.findElement(By.id(searchFld)).sendKeys("Pijamas");
+        return this;
     }
     public String getSearchValid() {
         String validValueTextViewCss = ".heading-counter";

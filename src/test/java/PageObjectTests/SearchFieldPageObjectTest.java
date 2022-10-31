@@ -10,9 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 public class SearchFieldPageObjectTest {
     WebDriver driver;
@@ -35,29 +33,28 @@ public class SearchFieldPageObjectTest {
     void testSearch() {
         driver.get("http://automationpractice.com/index.php");
 
-        SearchFieldPageObject searchFieldPageObject = new SearchFieldPageObject(driver);
-        searchFieldPageObject.inputSearchFld();
-        searchFieldPageObject.sendValidValue();
-        searchFieldPageObject.clickSearchBtn();
-
+        String validValue = new SearchFieldPageObject(driver)
+        .inputSearchFld()
+        .sendValidValue()
+        .clickSearchBtn()
+        .getSearchValid();
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".heading-counter")));
-        String validValue = searchFieldPageObject.getSearchValid();
         assertEquals("7 results have been found.", validValue);
 
-        searchFieldPageObject.clearSearchFld();
-        searchFieldPageObject.sendInvalidValue();
-        searchFieldPageObject.clickSearchBtn();
-
-
+        String invalidValue = new SearchFieldPageObject(driver)
+        .clearSearchFld()
+        .sendInvalidValue()
+        .clickSearchBtn()
+        .getSearchInvalid();
 
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".heading-counter")));
-        String invalidValue = searchFieldPageObject.getSearchInvalid();
         assertEquals("0 results have been found.", invalidValue);
 
-        searchFieldPageObject.clearSearchFld();
-        searchFieldPageObject.clickSearchBtn();
+        String emptySearch = new SearchFieldPageObject(driver)
+        .clearSearchFld()
+        .clickSearchBtn()
+        .getEmptySearch();
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-warning")));
-        String emptySearch = searchFieldPageObject.getEmptySearch();
         assertEquals("Please enter a search keyword", emptySearch);
 
     }
