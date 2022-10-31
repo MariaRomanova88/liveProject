@@ -32,15 +32,15 @@ public class LogoPageObjectTest {
     void testLogo() {
         driver.get("http://automationpractice.com/index.php");
 
-        LogoPageObject logoPageObject = new LogoPageObject(driver);
-        logoPageObject.clickLogoBtn();
-        logoPageObject.clickAboutLink();
-        logoPageObject.clickLogoBtn();
-        logoPageObject.clickCartBtn();
-        logoPageObject.clickLogoBtn();
+        WebElement getLogo = new LogoPageObject(driver)
+        .clickLogoBtn()
+        .clickAboutLink()
+        .clickLogoBtn()
+        .clickCartBtn()
+        .clickLogoBtn()
+        .getLogo();
         new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[alt='My Store']")));
-        WebElement logo = logoPageObject.getLogo();
-        assertTrue(logo.isDisplayed(), "Logo hasn't been displayed.");
+        assertTrue(getLogo.isDisplayed(), "Logo hasn't been displayed.");
 
     }
 }

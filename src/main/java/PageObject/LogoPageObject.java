@@ -10,15 +10,18 @@ public class LogoPageObject {
     public LogoPageObject(WebDriver driver) {
         this.driver = driver;
     }
-    public void clickLogoBtn() {
+    public LogoPageObject clickLogoBtn() {
         driver.findElement(By.cssSelector(cartBtn)).click();
+        return this;
     }
-    public void clickAboutLink() {
+    public LogoPageObject clickAboutLink() {
         String aboutLink = "About us";
         driver.findElement(By.linkText(aboutLink)).click();
+        return this;
     }
-    public void clickCartBtn() {
+    public LogoPageObject clickCartBtn() {
         driver.findElement(By.cssSelector(cartBtn)).click();
+        return this;
     }
     public WebElement getLogo() {
         String logoBtn = "img[alt='My Store']";
