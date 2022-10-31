@@ -22,7 +22,7 @@ public class SearchFieldPageObject {
     public void sendValidValue() {
         driver.findElement(By.id(searchFld)).sendKeys("Dress");
     }
-    public void cleanSearchFld() {
+    public void clearSearchFld() {
         driver.findElement(By.id(searchFld)).clear();
     }
     public void sendInvalidValue() {

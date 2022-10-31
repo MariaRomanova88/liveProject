@@ -44,15 +44,15 @@ public class SearchFieldPageObjectTest {
         String validValue = searchFieldPageObject.getSearchValid();
         assertEquals("7 results have been found.", validValue);
 
-        searchFieldPageObject.cleanSearchFld();
+        searchFieldPageObject.clearSearchFld();
         searchFieldPageObject.sendInvalidValue();
         searchFieldPageObject.clickSearchBtn();
 
-        new WebDriverWait(driver, 7).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".heading-counter")));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".heading-counter")));
         String invalidValue = searchFieldPageObject.getSearchInvalid();
         assertEquals("0 results have been found.", invalidValue);
 
-        searchFieldPageObject.cleanSearchFld();
+        searchFieldPageObject.clearSearchFld();
         searchFieldPageObject.clickSearchBtn();
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-warning")));
         String emptySearch = searchFieldPageObject.getEmptySearch();

@@ -21,27 +21,27 @@ public class AddingCartPageObject {
         driver.findElement(By.cssSelector(womenBtn)).click();
     }
 
-    public void dressesLink() {
+    public void clickDressesLink() {
         driver.findElement(By.linkText(dressesLink)).click();
     }
-    public void eveningDressesLink() {
+    public void clickEveningDressesLink() {
         driver.findElement(By.linkText(eveningDressesLink)).click();
     }
 
-    public void productName() {
+    public void clickProductName() {
         driver.findElement(By.cssSelector(productName)).click();
 
     }
-     public void addToCart() {
+     public void clickAddToCart() {
          driver.findElement(By.id(addToCart)).click();
      }
 
     public String getProductQuantity() {
-        return driver.findElement(By.id(productQuantity)).getText();
+        return driver.findElement(By.cssSelector(productQuantity)).getText();
 
     }
     public String getAddProduct() {
-        return driver.findElement(By.id(addProduct)).getText();
+        return driver.findElement(By.cssSelector(addProduct)).getText();
 
     }
 }
