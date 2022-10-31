@@ -6,11 +6,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MyStoreTests {
     WebDriver driver;
@@ -33,22 +35,16 @@ public class MyStoreTests {
     void testLogo() {
         driver.get("http://automationpractice.com/index.php");
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-
         driver.findElement(By.cssSelector("img[alt='My Store']")).click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("About us")));
         driver.findElement(By.linkText("About us")).click();
         driver.findElement(By.cssSelector("img[alt='My Store']")).click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[title='View my shopping cart']")));
         driver.findElement(By.cssSelector("[title='View my shopping cart']")).click();
         driver.findElement(By.cssSelector("img[alt='My Store']")).click();
 
-        //Проверка наличия лого на странице (Expected: 'My Store').
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("img[alt='My Store']")));
-        String title = driver.findElement(By.cssSelector("img[alt='My Store']")).getText();
-        assertEquals("", title);
+        //Проверка наличия лого на странице.
+        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[alt='My Store']")));
+        WebElement title = driver.findElement(By.cssSelector("img[alt='My Store']"));
+        assertTrue(title.isDisplayed());
     }
         @Test
         @DisplayName("'Search field' validation.")
