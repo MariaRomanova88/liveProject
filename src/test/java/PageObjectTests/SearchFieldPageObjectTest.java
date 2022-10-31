@@ -48,7 +48,9 @@ public class SearchFieldPageObjectTest {
         searchFieldPageObject.sendInvalidValue();
         searchFieldPageObject.clickSearchBtn();
 
-        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".heading-counter")));
+
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".heading-counter")));
         String invalidValue = searchFieldPageObject.getSearchInvalid();
         assertEquals("0 results have been found.", invalidValue);
 

@@ -34,11 +34,11 @@ public class SearchFieldPageObject {
     }
     public String getSearchInvalid() {
         String invalidValueTextViewCss = ".heading-counter";
-        return driver.findElement(By.id(invalidValueTextViewCss)).getText();
+        return driver.findElement(By.cssSelector(invalidValueTextViewCss)).getText();
     }
     public String getEmptySearch() {
         String emptyValueTextViewCss = ".alert-warning";
-        return driver.findElement(By.id(emptyValueTextViewCss)).getText();
+        return driver.findElement(By.cssSelector(emptyValueTextViewCss)).getText();
     }
 
 }
