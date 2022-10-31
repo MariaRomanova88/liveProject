@@ -14,18 +14,13 @@ public class SearchField {
         driver.manage().window().maximize();
         driver.get("http://automationpractice.com/index.php");
 
-        driver.findElement(By.id("search_query_top")).click();
-
         driver.findElement(By.id("search_query_top")).sendKeys("Dress");
-
+        driver.findElement(By.cssSelector(".button-search")).click();
         driver.findElement(By.id("search_query_top")).clear();
-
         driver.findElement(By.id("search_query_top")).sendKeys("Pijamas");
-
+        driver.findElement(By.cssSelector(".button-search")).click();
         driver.findElement(By.id("search_query_top")).clear();
-
-        driver.findElement(By.cssSelector("#header > div:nth-child(3) .row")).click();
-
+        driver.findElement(By.cssSelector(".button-search")).click();
         driver.quit();
 
     }
