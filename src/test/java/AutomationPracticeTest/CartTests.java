@@ -18,6 +18,7 @@ public class CartTests {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.get("http://automationpractice.com/index.php");
     }
 
     @AfterEach()
@@ -28,7 +29,6 @@ public class CartTests {
     @Test
     @DisplayName("Check the possibility of adding items to the Cart (through the left-side menu-bar).")
     void testAdding() {
-        driver.get("http://automationpractice.com/index.php");
 
         driver.findElement(By.cssSelector("a[title='Women']")).click();
         driver.findElement(By.linkText("Dresses")).click();
@@ -53,7 +53,6 @@ public class CartTests {
     @Test
     @DisplayName("Check the possibility of deleting items from the Cart (in the up-right side) using the 'icon-trash'.")
     void testDeleting() {
-        driver.get("http://automationpractice.com/index.php");
 
         // Precondition: There is an item in the cart.
         driver.findElement(By.cssSelector("a[title='Women']")).click();
@@ -84,5 +83,4 @@ public class CartTests {
         assertEquals("Your shopping cart is empty.", emptyCart.getText());
 
     }
-
 }
