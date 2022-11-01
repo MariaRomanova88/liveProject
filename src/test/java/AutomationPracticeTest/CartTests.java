@@ -74,10 +74,6 @@ public class CartTests {
         driver.findElement(By.cssSelector(".icon-trash")).click();
 
         //Assertions (Checking if a product has deleted).
-        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[title='View my shopping cart']")));
-        WebElement cartTitle = driver.findElement(By.cssSelector("a[title='View my shopping cart']"));
-        assertEquals("Cart 1 Product", cartTitle.getText());
-
         new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-warning")));
         WebElement emptyCart = driver.findElement(By.cssSelector(".alert-warning"));
         assertEquals("Your shopping cart is empty.", emptyCart.getText());
