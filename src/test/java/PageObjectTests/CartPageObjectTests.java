@@ -17,52 +17,53 @@ public class CartPageObjectTests {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.get("http://automationpractice.com/index.php");
     }
+
     @AfterEach()
     void quit() {
         driver.quit();
     }
+
     @Test
     @DisplayName("Check the possibility of adding items to the Cart (through the left-side menu-bar).")
     void testAdding() {
-        driver.get("http://automationpractice.com/index.php");
 
-        String productQuantity = new AddingCartPageObject(driver)
-        .clickWomenBtn()
-        .clickDressesLink()
-        .clickEveningDressesLink()
-        .clickProductName()
-        .clickAddToCart()
-        .getProductQuantity();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span#layer_cart_product_quantity")));
-       Assertions.assertEquals("1", productQuantity);
+        AddingCartPageObject addingCartPageObject = new AddingCartPageObject(driver);
+        addingCartPageObject.clickWomenBtn();
+        addingCartPageObject.clickDressesLink();
+        addingCartPageObject.clickEveningDressesLink();
+        addingCartPageObject.clickProductName();
+        addingCartPageObject.clickAddToCart();
 
-        String addProduct = new AddingCartPageObject(driver)
-        .getAddProduct();
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#quantity_wanted")));
+        String productQuantity = addingCartPageObject.getProductQuantity();
+        Assertions.assertEquals("1", productQuantity);
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".col-md-6.col-xs-12.layer_cart_product > h2")));
+        String addProduct = addingCartPageObject.getAddProduct();
         Assertions.assertEquals("Product successfully added to your shopping cart", addProduct);
+
     }
     @Test
     @DisplayName("Check the possibility of deleting items from the Cart (in the up-right side) using the 'icon-trash'.")
     void testDeleting() {
-        driver.get("http://automationpractice.com/index.php");
 
         // Precondition: There is an item in the cart.
-        String cartTitle = new DeletingCartPageObject(driver)
-        .clickWomenBtn()
-        .clickDressesLink()
-        .clickEveningDressesLink()
-        .clickProductName()
-        .clickAddToCart()
-        .clickContShopping()
-        .clickViewCart()
-        .getCartTitle();
+        DeletingCartPageObject deletingCartPageObject = new DeletingCartPageObject(driver);
+        deletingCartPageObject.clickWomenBtn();
+        deletingCartPageObject.clickDressesLink();
+        deletingCartPageObject.clickEveningDressesLink();
+        deletingCartPageObject.clickProductName();
+        deletingCartPageObject.clickAddToCart();
+        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span[title='Continue shopping'] > span")));
+        deletingCartPageObject.clickContShopping();
+        new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[title='View my shopping cart']")));
+        deletingCartPageObject.clickViewCart();
+        String cartTitle = deletingCartPageObject.getCartTitle();
         Assertions.assertEquals("Cart 1 Product", cartTitle);
-
-        String cartEmpty = new DeletingCartPageObject(driver)
-        .clickIconTrash()
-        .getCartEmpty();
+        deletingCartPageObject.clickIconTrash();
         new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-warning")));
+        String cartEmpty = deletingCartPageObject.getCartEmpty();
         Assertions.assertEquals("Your shopping cart is empty.", cartEmpty);
 
     }

@@ -9,45 +9,37 @@ public class DeletingCartPageObject {
     public DeletingCartPageObject(WebDriver driver) {
         this.driver = driver;
     }
-    public DeletingCartPageObject clickWomenBtn() {
+    public void clickWomenBtn() {
         String womenBtn = "a[title='Women']";
         driver.findElement(By.cssSelector(womenBtn)).click();
-        return this;
     }
-    public DeletingCartPageObject clickDressesLink() {
+    public void clickDressesLink() {
         String dressesLink = "Dresses";
         driver.findElement(By.linkText(dressesLink)).click();
-        return this;
     }
-    public DeletingCartPageObject clickEveningDressesLink() {
+    public void clickEveningDressesLink() {
         String eveningDressesLink = "Evening Dresses";
         driver.findElement(By.linkText(eveningDressesLink)).click();
-        return this;
     }
-    public DeletingCartPageObject clickProductName() {
+    public void clickProductName() {
         String productName = ".right-block .product-name";
         driver.findElement(By.cssSelector(productName)).click();
-        return this;
     }
-    public DeletingCartPageObject clickAddToCart() {
+    public void clickAddToCart() {
         String addToCart = "add_to_cart";
         driver.findElement(By.id(addToCart)).click();
-        return this;
     }
-    public DeletingCartPageObject clickContShopping() {
+    public void clickContShopping() {
         String contShopping = "span[title='Continue shopping'] > span";
         driver.findElement(By.cssSelector(contShopping)).click();
-        return this;
     }
-    public DeletingCartPageObject clickViewCart() {
+    public void clickViewCart() {
         String viewCart = "a[title='View my shopping cart']";
         driver.findElement(By.cssSelector(viewCart)).click();
-        return this;
     }
-    public DeletingCartPageObject clickIconTrash() {
+    public void clickIconTrash() {
         String iconTrash = ".icon-trash";
         driver.findElement(By.cssSelector(iconTrash)).click();
-        return this;
     }
     public String getCartTitle() {
         String cartTitle = "a[title='View my shopping cart']";
