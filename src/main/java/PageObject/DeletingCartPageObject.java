@@ -4,59 +4,57 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class DeletingCartPageObject {
-    private WebDriver driver;
-
-    private final String womenBtn = "a[title='Women']";
-    private final String dressesLink = "Dresses";
-    private final String eveningDressesLink = "Evening Dresses";
-    private final String productName = ".right-block .product-name";
-    private final String addToCart = "add_to_cart";
-    private final String ContShopping = "span[title='Continue shopping'] > span";
-    private final String viewCart = "a[title='View my shopping cart']";
-    private final String iconTrash = ".icon-trash";
-    private final String cartTitle = "a[title='View my shopping cart']";
-    private final String cartEmpty = ".alert-warning";
+    private final WebDriver driver;
 
     public DeletingCartPageObject(WebDriver driver) {
         this.driver = driver;
     }
-    public void clickWomenBtn() {
+    public DeletingCartPageObject clickWomenBtn() {
+        String womenBtn = "a[title='Women']";
         driver.findElement(By.cssSelector(womenBtn)).click();
+        return this;
     }
-
-    public void clickDressesLink() {
+    public DeletingCartPageObject clickDressesLink() {
+        String dressesLink = "Dresses";
         driver.findElement(By.linkText(dressesLink)).click();
+        return this;
     }
-    public void clickEveningDressesLink() {
+    public DeletingCartPageObject clickEveningDressesLink() {
+        String eveningDressesLink = "Evening Dresses";
         driver.findElement(By.linkText(eveningDressesLink)).click();
+        return this;
     }
-
-    public void clickProductName() {
+    public DeletingCartPageObject clickProductName() {
+        String productName = ".right-block .product-name";
         driver.findElement(By.cssSelector(productName)).click();
+        return this;
     }
-
-    public void clickAddToCart() {
+    public DeletingCartPageObject clickAddToCart() {
+        String addToCart = "add_to_cart";
         driver.findElement(By.id(addToCart)).click();
+        return this;
     }
-
-    public void clickContShopping() {
-        driver.findElement(By.cssSelector(ContShopping)).click();
+    public DeletingCartPageObject clickContShopping() {
+        String contShopping = "span[title='Continue shopping'] > span";
+        driver.findElement(By.cssSelector(contShopping)).click();
+        return this;
     }
-
-    public void clickViewCart() {
+    public DeletingCartPageObject clickViewCart() {
+        String viewCart = "a[title='View my shopping cart']";
         driver.findElement(By.cssSelector(viewCart)).click();
+        return this;
     }
-
-    public void clickIconTrash() {
+    public DeletingCartPageObject clickIconTrash() {
+        String iconTrash = ".icon-trash";
         driver.findElement(By.cssSelector(iconTrash)).click();
+        return this;
     }
-
     public String getCartTitle() {
+        String cartTitle = "a[title='View my shopping cart']";
         return driver.findElement(By.cssSelector(cartTitle)).getText();
-
     }
     public String getCartEmpty() {
+        String cartEmpty = ".alert-warning";
         return driver.findElement(By.cssSelector(cartEmpty)).getText();
-
     }
 }

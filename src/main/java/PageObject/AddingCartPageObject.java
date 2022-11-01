@@ -4,45 +4,44 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddingCartPageObject {
-    private WebDriver driver;
-
-    private final String womenBtn = "a[title='Women']";
-    private final String dressesLink = "Dresses";
-    private final String eveningDressesLink = "Evening Dresses";
-    private final String productName = ".right-block .product-name";
-    private final String addToCart = "add_to_cart";
-    private final String productQuantity = "span#layer_cart_product_quantity";
-    private final String addProduct = ".col-md-6.col-xs-12.layer_cart_product > h2";
+    private final WebDriver driver;
 
     public AddingCartPageObject(WebDriver driver) {
         this.driver = driver;
     }
-    public void clickWomenBtn() {
+    public AddingCartPageObject clickWomenBtn() {
+        String womenBtn = "a[title='Women']";
         driver.findElement(By.cssSelector(womenBtn)).click();
+        return this;
     }
-
-    public void clickDressesLink() {
+    public AddingCartPageObject clickDressesLink() {
+        String dressesLink = "Dresses";
         driver.findElement(By.linkText(dressesLink)).click();
+        return this;
     }
-    public void clickEveningDressesLink() {
+    public AddingCartPageObject clickEveningDressesLink() {
+        String eveningDressesLink = "Evening Dresses";
         driver.findElement(By.linkText(eveningDressesLink)).click();
+        return this;
     }
 
-    public void clickProductName() {
+    public AddingCartPageObject clickProductName() {
+        String productName = ".right-block .product-name";
         driver.findElement(By.cssSelector(productName)).click();
-
+        return this;
     }
-     public void clickAddToCart() {
+     public AddingCartPageObject clickAddToCart() {
+         String addToCart = "add_to_cart";
          driver.findElement(By.id(addToCart)).click();
+         return this;
      }
-
     public String getProductQuantity() {
+        String productQuantity = "span#layer_cart_product_quantity";
         return driver.findElement(By.cssSelector(productQuantity)).getText();
-
     }
     public String getAddProduct() {
+        String addProduct = ".col-md-6.col-xs-12.layer_cart_product > h2";
         return driver.findElement(By.cssSelector(addProduct)).getText();
-
     }
 }
 
