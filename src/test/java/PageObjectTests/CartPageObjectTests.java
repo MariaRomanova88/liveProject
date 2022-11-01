@@ -36,7 +36,7 @@ public class CartPageObjectTests {
         addingCartPageObject.clickProductName();
         addingCartPageObject.clickAddToCart();
 
-        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#quantity_wanted")));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span#layer_cart_product_quantity")));
         String productQuantity = addingCartPageObject.getProductQuantity();
         Assertions.assertEquals("1", productQuantity);
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".col-md-6.col-xs-12.layer_cart_product > h2")));
@@ -59,8 +59,6 @@ public class CartPageObjectTests {
         deletingCartPageObject.clickContShopping();
         new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[title='View my shopping cart']")));
         deletingCartPageObject.clickViewCart();
-        String cartTitle = deletingCartPageObject.getCartTitle();
-        Assertions.assertEquals("Cart 1 Product", cartTitle);
         deletingCartPageObject.clickIconTrash();
         new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-warning")));
         String cartEmpty = deletingCartPageObject.getCartEmpty();

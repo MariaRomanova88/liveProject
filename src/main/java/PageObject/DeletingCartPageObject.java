@@ -41,10 +41,6 @@ public class DeletingCartPageObject {
         String iconTrash = ".icon-trash";
         driver.findElement(By.cssSelector(iconTrash)).click();
     }
-    public String getCartTitle() {
-        String cartTitle = "a[title='View my shopping cart']";
-        return driver.findElement(By.cssSelector(cartTitle)).getText();
-    }
     public String getCartEmpty() {
         String cartEmpty = ".alert-warning";
         return driver.findElement(By.cssSelector(cartEmpty)).getText();
