@@ -9,37 +9,45 @@ public class DeletingCartPageObject {
     public DeletingCartPageObject(WebDriver driver) {
         this.driver = driver;
     }
-    public void clickWomenBtn() {
+    public DeletingCartPageObject clickWomenBtn() {
         String womenBtn = "a[title='Women']";
         driver.findElement(By.cssSelector(womenBtn)).click();
+        return this;
     }
-    public void clickDressesLink() {
+    public DeletingCartPageObject clickDressesLink() {
         String dressesLink = "Dresses";
         driver.findElement(By.linkText(dressesLink)).click();
+        return this;
     }
-    public void clickEveningDressesLink() {
+    public DeletingCartPageObject clickEveningDressesLink() {
         String eveningDressesLink = "Evening Dresses";
         driver.findElement(By.linkText(eveningDressesLink)).click();
+        return this;
     }
-    public void clickProductName() {
+    public DeletingCartPageObject clickProductName() {
         String productName = ".right-block .product-name";
         driver.findElement(By.cssSelector(productName)).click();
+        return this;
     }
-    public void clickAddToCart() {
+    public DeletingCartPageObject clickAddToCart() {
         String addToCart = "add_to_cart";
         driver.findElement(By.id(addToCart)).click();
+        return this;
     }
-    public void clickContShopping() {
+    public DeletingCartPageObject clickContShopping() {
         String contShopping = "span[title='Continue shopping'] > span";
         driver.findElement(By.cssSelector(contShopping)).click();
+        return this;
     }
-    public void clickViewCart() {
+    public DeletingCartPageObject clickViewCart() {
         String viewCart = "a[title='View my shopping cart']";
         driver.findElement(By.cssSelector(viewCart)).click();
+        return this;
     }
-    public void clickIconTrash() {
+    public DeletingCartPageObject clickIconTrash() {
         String iconTrash = ".icon-trash";
         driver.findElement(By.cssSelector(iconTrash)).click();
+        return this;
     }
     public String getCartEmpty() {
         String cartEmpty = ".alert-warning";
