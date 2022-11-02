@@ -29,20 +29,19 @@ public class CartPageObjectTests {
     @DisplayName("Check the possibility of adding items to the Cart (through the left-side menu-bar).")
     void testAdding() {
 
-        String productQuantity = new AddingCartPageObject(driver)
-        .clickWomenBtn()
-        .clickDressesLink()
-        .clickEveningDressesLink()
-        .clickProductName()
-        .clickAddToCart()
-        .getProductQuantity();
+        AddingCartPageObject addingCartPageObject = new AddingCartPageObject(driver);
+        addingCartPageObject.clickWomenBtn();
+        addingCartPageObject.clickDressesLink();
+        addingCartPageObject.clickEveningDressesLink();
+        addingCartPageObject.clickProductName();
+        addingCartPageObject.clickAddToCart();
 
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span#layer_cart_product_quantity")));
+        String productQuantity = addingCartPageObject.getProductQuantity();
         Assertions.assertEquals("1", productQuantity);
 
-        String addProduct = new AddingCartPageObject(driver)
-        .getAddProduct();
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".col-md-6.col-xs-12.layer_cart_product > h2")));
+        String addProduct = addingCartPageObject.getAddProduct();
         Assertions.assertEquals("Product successfully added to your shopping cart", addProduct);
 
     }
@@ -51,17 +50,18 @@ public class CartPageObjectTests {
     void testDeleting() {
 
         // Precondition: There is an item in the cart.
-        String cartEmpty = new DeletingCartPageObject(driver)
-        .clickWomenBtn()
-        .clickDressesLink()
-        .clickEveningDressesLink()
-        .clickProductName()
-        .clickAddToCart()
-        .clickContShopping()
-        .clickViewCart()
-        .clickIconTrash()
-        .getCartEmpty();
+        DeletingCartPageObject deletingCartPageObject = new DeletingCartPageObject(driver);
+        deletingCartPageObject.clickWomenBtn();
+        deletingCartPageObject.clickDressesLink();
+        deletingCartPageObject.clickEveningDressesLink();
+        deletingCartPageObject.clickProductName();
+        deletingCartPageObject.clickAddToCart();
+        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span[title='Continue shopping'] > span")));
+        deletingCartPageObject.clickContShopping();
+        deletingCartPageObject.clickViewCart();
+        deletingCartPageObject.clickIconTrash();
         new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert-warning")));
+        String cartEmpty = deletingCartPageObject.getCartEmpty();
         Assertions.assertEquals("Your shopping cart is empty.", cartEmpty);
 
     }

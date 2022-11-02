@@ -9,30 +9,25 @@ public class AddingCartPageObject {
     public AddingCartPageObject(WebDriver driver) {
         this.driver = driver;
     }
-    public AddingCartPageObject clickWomenBtn() {
+    public void clickWomenBtn() {
         String womenBtn = "a[title='Women']";
         driver.findElement(By.cssSelector(womenBtn)).click();
-        return this;
     }
-    public AddingCartPageObject clickDressesLink() {
+    public void clickDressesLink() {
         String dressesLink = "Dresses";
         driver.findElement(By.linkText(dressesLink)).click();
-        return this;
     }
-    public AddingCartPageObject clickEveningDressesLink() {
+    public void clickEveningDressesLink() {
         String eveningDressesLink = "Evening Dresses";
         driver.findElement(By.linkText(eveningDressesLink)).click();
-        return this;
     }
-    public AddingCartPageObject clickProductName() {
+    public void clickProductName() {
         String productName = ".right-block .product-name";
         driver.findElement(By.cssSelector(productName)).click();
-        return this;
     }
-    public AddingCartPageObject clickAddToCart() {
+    public void clickAddToCart() {
         String addToCart = "add_to_cart";
         driver.findElement(By.id(addToCart)).click();
-        return this;
     }
     public String getProductQuantity() {
         String productQuantity = "span#layer_cart_product_quantity";
