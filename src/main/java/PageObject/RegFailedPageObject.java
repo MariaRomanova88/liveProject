@@ -1,5 +1,6 @@
 package PageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -10,19 +11,20 @@ import org.openqa.selenium.WebDriver;
 */
 
 public class RegFailedPageObject {
-
     private final WebDriver driver;
-
     public RegFailedPageObject(WebDriver driver) {
         this.driver = driver;
     }
+
+    @Step("Click 'Submit' Btn;")
     public RegFailedPageObject clickSubmitBtn() {
         String submitBtn = "input[value='submit']";
         driver.findElement(By.cssSelector(submitBtn)).click();
         return this;
     }
+    @Step("Check error message 'This field is required.'.")
     public String getFieldError() {
-        String errorMessage = "/html//form[@id='register_form']/fieldset[1]/p[1]/label[@class='error_p']";
-        return driver.findElement(By.xpath(errorMessage)).getText();
+        String errorMessage = "#register_form p:nth-of-type(1) .error_p:nth-child(3)";
+        return driver.findElement(By.cssSelector(errorMessage)).getText();
     }
 }

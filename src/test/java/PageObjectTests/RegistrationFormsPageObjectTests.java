@@ -18,7 +18,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegistrationFormsPageObjectTests {
     WebDriver driver;
-
     @BeforeEach()
     void setup() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
