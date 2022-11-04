@@ -9,6 +9,7 @@ public class AddingCartPageObject {
     public AddingCartPageObject(WebDriver driver) {
         this.driver = driver;
     }
+
     public void clickWomenBtn() {
         String womenBtn = "a[title='Women']";
         driver.findElement(By.cssSelector(womenBtn)).click();

@@ -1,6 +1,11 @@
 package PageObjectTests;
 
 import PageObject.LogoPageObject;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+@Epic("Logo Tests Epic.")
+@Feature("Clickability of logo, and the ability to return to the Homepage.")
 
 public class LogoPageObjectTest {
     WebDriver driver;
@@ -28,7 +35,9 @@ public class LogoPageObjectTest {
     }
 
     @Test
-    @DisplayName("Check the clickability of logo, and the ability to return to the main page by clicking on logo.")
+    @DisplayName("Logo.")
+    @Story("User tries to return to Homepage by clicking on logo.")
+    @Description("Check the clickability of logo, and the ability to return to the main page by clicking on logo.")
     void testLogo() {
         driver.get("http://automationpractice.com/index.php");
 

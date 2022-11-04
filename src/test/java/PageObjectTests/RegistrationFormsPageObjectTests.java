@@ -2,12 +2,19 @@ package PageObjectTests;
 
 import PageObject.RegFailedPageObject;
 import PageObject.SucsRegPageObject;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+@Epic("Registration Tests Epic.")
+@Feature("Adding and Deleting item to/from the Cart Features.")
 
 public class RegistrationFormsPageObjectTests {
     WebDriver driver;
@@ -18,6 +25,7 @@ public class RegistrationFormsPageObjectTests {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
     }
 
     @AfterEach()
@@ -33,9 +41,10 @@ public class RegistrationFormsPageObjectTests {
             First Name, Hobby, hobby N., Username, E-mail, Password, Confirm Password.
     */
     @Test
-    @DisplayName("Check Required fields in User Registration form (Do not fill in the fields and click Submit).")
+    @DisplayName("Registration is Failed.")
+    @Story("User tries to do invalid registration.")
+    @Description("Check Required fields in User Registration form (Do not fill in the fields and click Submit).")
     void testRegistrationFailed() {
-        driver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
 
         String fieldError = new RegFailedPageObject(driver)
         .clickSubmitBtn()
@@ -53,9 +62,10 @@ public class RegistrationFormsPageObjectTests {
         Field data reset with no messages anywhere.
  */
     @Test
-    @DisplayName("Check User Registration form with valid data/Fill in only Required fields (see Description in Test Case 1)")
+    @DisplayName("Successful Registration.")
+    @Story("User tries to fill in valid datas in requared fields.")
+    @Description("Check User Registration form with valid data/Fill in only Required fields (see Description in Test Case 1)")
     void testSuccessfulRegistration() {
-        driver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
 
         String registration = String.valueOf(new SucsRegPageObject(driver)
 
